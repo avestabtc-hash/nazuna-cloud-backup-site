@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nazuna Cloud Backup - Personal Google Drive Backup Utility</title>
+  <meta name="description" content="Nazuna Cloud Backup is a private, owner-controlled backup utility built on rclone and Google Drive, with SHA-256 integrity verification and a narrow drive.file OAuth scope.">
+  <meta name="color-scheme" content="dark">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Nazuna Cloud Backup</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="hero">
+      <p class="eyebrow">Personal backup utility</p>
+      <h1>Nazuna Cloud Backup</h1>
+      <p class="lede">A private, single-user backup and restore tool. It runs on the owner's own computer, uses <a href="https://rclone.org/" rel="noopener noreferrer">rclone</a> to move files to and from the owner's own Google Drive, and has no application server of its own.</p>
+    </section>
+
+    <h2>What it does</h2>
+    <ul class="cards">
+      <li class="card">
+        <h3>Backup and restoration</h3>
+        <p>Copies selected local files into a folder in the owner's Google Drive and brings them back when a restore is needed. Transfers are started manually by the owner; there is no always-on background sync service.</p>
+      </li>
+      <li class="card">
+        <h3>SHA-256 integrity verification</h3>
+        <p>File integrity is checked with SHA-256 checksums computed locally on the owner's machine and compared between source and restored copies. Verification happens locally; it is not a server-side attestation from Google Drive.</p>
+      </li>
+      <li class="card">
+        <h3>Google Drive OAuth 2.0</h3>
+        <p>Access to Google Drive is granted through Google's standard OAuth 2.0 authorization flow. The resulting token is kept in the local rclone configuration on the owner's computer, never on this website.</p>
+      </li>
+      <li class="card">
+        <h3>Limited <code>drive.file</code> scope</h3>
+        <p>The only Google scope requested is <code>drive.file</code>, the per-file scope. It covers files this tool creates or files the owner explicitly opens with it. It does not grant access to the rest of the Drive.</p>
+      </li>
+      <li class="card">
+        <h3>Owner-controlled transfers</h3>
+        <p>The owner chooses which files are included, when a transfer runs, and which Drive folder is used. Nothing is uploaded without an explicitly started command.</p>
+      </li>
+      <li class="card">
+        <h3>No independent application server</h3>
+        <p>There is no backend, database, telemetry endpoint, or hosted account system. This site is static documentation; the utility itself is a local rclone configuration and workflow.</p>
+      </li>
+    </ul>
+
+    <h2>How a backup works</h2>
+    <ol class="steps">
+      <li>The owner authorizes Google Drive access once through Google's OAuth 2.0 consent screen, with the <code>drive.file</code> scope.</li>
+      <li>The owner runs an rclone command on their own machine to copy a chosen set of files into their own Google Drive.</li>
+      <li>Restores run the same way in reverse. Local SHA-256 checksums are computed and compared to detect differences between the source and the restored copy.</li>
+    </ol>
+
+    <div class="note">
+      <p><strong>Scope of this project.</strong> Nazuna Cloud Backup is a personal utility for its owner, not a publicly offered cloud service. This website does not collect data, host accounts, or accept file uploads. The Google OAuth consent screen and its verification are configured separately in Google Cloud Console by the owner.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Nazuna Cloud Backup - static project documentation.</p>
+      <p><a href="privacy.html">Privacy Policy</a></p>
+    </div>
+  </footer>
+</body>
+</html>

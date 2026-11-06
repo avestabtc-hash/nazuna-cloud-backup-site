@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy - Nazuna Cloud Backup</title>
+  <meta name="description" content="Privacy Policy for Nazuna Cloud Backup: Google Drive OAuth permissions, data handling, retention, deletion, and revocation.">
+  <meta name="color-scheme" content="dark">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Nazuna Cloud Backup</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="privacy.html" aria-current="page">Privacy Policy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap policy">
+    <section class="hero">
+      <p class="eyebrow">Privacy Policy</p>
+      <h1>Privacy Policy</h1>
+      <p class="lede">This policy describes how the personal utility Nazuna Cloud Backup uses Google Drive access granted through OAuth 2.0. It applies to the backup workflow only. This website consists of static HTML and CSS with no forms, scripts, or analytics, and collects no information from visitors.</p>
+      <p class="meta">Last updated: 6 November 2026</p>
+    </section>
+
+    <h2>1. What Google Drive data is accessed</h2>
+    <p>The tool requests the single Google Drive scope <code>drive.file</code>. That is the per-file scope: it permits access to files created by this tool and to files the owner explicitly opens with it. It does not permit browsing or reading the rest of the owner's Drive.</p>
+    <ul>
+      <li>File contents of the specific files the owner backs up or restores.</li>
+      <li>File metadata needed to transfer and compare those files, such as names, sizes, modification times, and Drive file identifiers.</li>
+      <li>No Gmail, Contacts, Calendar, Photos, or other Google account data is requested. No additional Google scopes are requested beyond <code>drive.file</code>.</li>
+    </ul>
+
+    <h2>2. Why access is required</h2>
+    <p>Google Drive is the storage destination. Without the <code>drive.file</code> scope, rclone cannot create backup files in the owner's Drive or read them back for a restore. The scope is used only for those backup and restore operations.</p>
+
+    <h2>3. How files are transferred and stored</h2>
+    <ul>
+      <li>Transfers happen directly between the owner's computer and Google Drive through Google's API over HTTPS, initiated by an rclone command the owner runs.</li>
+      <li>Backed-up files remain in the owner's own Google Drive account, in the folder the owner chooses. The project has no separate copy.</li>
+      <li>No file passes through a server operated by this project. There is no application server, database, or third-party storage service in the workflow.</li>
+      <li>Storage and at-rest protection are those of the owner's Google Drive account. This tool does not add, and does not claim, any additional encryption layer or security certification.</li>
+      <li>Integrity checking uses SHA-256 checksums computed locally on the owner's machine, not Google Drive metadata.</li>
+    </ul>
+
+    <h2>4. How OAuth credentials are protected</h2>
+    <ul>
+      <li>Authorization is performed through Google's OAuth 2.0 consent screen. The resulting access and refresh tokens are stored in the rclone configuration on the owner's local computer.</li>
+      <li>The configuration file holding those tokens lives on that machine under its operating system account and file permissions. The tokens are not published on this website, not embedded in these pages, and not committed to this repository.</li>
+      <li>No client secret or token is transmitted to, or stored on, any server operated by this project.</li>
+    </ul>
+
+    <h2>5. Data retention and deletion</h2>
+    <ul>
+      <li>Backed-up files persist in the owner's Google Drive until the owner deletes them. There is no automatic retention period imposed by this project.</li>
+      <li>To delete backup data, remove the files or the backup folder from Google Drive. To remove local copies of transfer state, delete the relevant local files on the owner's machine.</li>
+      <li>To remove the authorization material, delete the rclone configuration entry that holds the token, and revoke access as described below.</li>
+      <li>This project retains no copy of the owner's files and therefore has nothing of its own to delete.</li>
+    </ul>
+
+    <h2>6. Revoking Google account authorization</h2>
+    <p>Access can be revoked at any time from the owner's Google Account permissions page at <a href="https://myaccount.google.com/permissions" rel="noopener noreferrer">myaccount.google.com/permissions</a>. Removing the Nazuna Cloud Backup entry stops the token from working. Deleting the corresponding local rclone configuration removes the stored token from the machine. Revocation stops future transfers; it does not delete files already stored in the owner's Drive.</p>
+
+    <h2>7. No selling of personal data</h2>
+    <p>No personal data is sold, rented, shared, or disclosed to third parties. The project has no commercial data flow.</p>
+
+    <h2>8. No advertising or profiling</h2>
+    <p>There is no advertising, tracking, analytics, behavioral profiling, or audience measurement on this website or in the backup workflow. This site loads no third-party scripts, fonts, or trackers.</p>
+
+    <h2>9. No AI model training on Google user data</h2>
+    <p>Google user data obtained through the <code>drive.file</code> scope is not used to train, fine-tune, or evaluate any AI or machine learning model. The workflow does not send file contents to any AI service.</p>
+
+    <h2>10. Contact for privacy inquiries</h2>
+    <p>Privacy inquiries can be submitted publicly through the issue tracker of this project's repository: <a href="https://github.com/avestabtc-hash/nazuna-cloud-backup-site/issues" rel="noopener noreferrer">github.com/avestabtc-hash/nazuna-cloud-backup-site/issues</a>. No private email address is published on this site. Because the issue tracker is public, do not post file contents, tokens, or other private information there.</p>
+
+    <div class="note">
+      <p><strong>Scope note.</strong> This policy describes the intended rclone and Google Drive workflow. It makes no claim of legal certification, regulatory compliance, or Google OAuth verification. Verification and domain approval, if any, are separate decisions made by Google in Google Cloud Console.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Nazuna Cloud Backup - static project documentation.</p>
+      <p><a href="index.html">Home</a> &middot; <a href="privacy.html">Privacy Policy</a></p>
+    </div>
+  </footer>
+</body>
+</html>
